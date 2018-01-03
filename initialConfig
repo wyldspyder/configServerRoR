@@ -1,0 +1,81 @@
+
+###
+# Installation de Git
+sudo yum install git
+
+###
+# creaction d'une paire de clé
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add -K ~/.ssh/id_rsa
+#ajouter la cle ssh à github
+###
+# test github connection
+ssh -T git@github.com
+
+###
+# installation de NVM
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+# redémarré la console pour avoir accès
+###
+# installation de node.js, dernière version stable (installe aussi NPM)
+nvm install stable
+###
+# update npm
+npm install npm@latest -g
+
+###
+#installation de Heroku CLI
+npm install -g heroku-cli
+###
+#connect to heroku
+heroku login
+
+###
+#install Ruby
+# first, install dependencies
+yum install gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel sqlite-devel
+
+#installe les cle d'acces au site de rpm
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+#telecharge rvm via curl
+curl -L get.rvm.io | bash -s stable
+
+#demarre RVM
+source /home/ec2-user/.rvm/scripts/rvm
+rvm reload
+rvm requirements run
+
+# installer la bone version de ruby
+rvm install 2.4.3
+rmv use 2.4.3 --default
+
+#mettre la jour les gems
+gem update --system
+
+#installer bundled
+gem install bundler 
+
+#installe rails
+gem install rails —no-ri —no-rdocs
+
+###
+# install postgresql
+yum install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-6-x86_64/pgdg-ami201503-96-9.6-2.noarch.rpm
+
+Sudo yum install postgresql96 postgresql96-server 
+
+#initialise database
+sudo service Postgresql-9.6 initdb
+sudo chkconfig PostgreSQL-9.6 on
+Sudo service postgresql-9.6 start
+
+#Make database accessible
+sudo -i -u Postgres
+createuser —interactive
+createdb ec2-user
+#exit & test with psql
+
+ 
