@@ -1,0 +1,24 @@
+#install backup version of ruby ??? (does not worked for me)
+sudo yum -y update
+
+#remove the root rvm installation
+sudo rm -rf /etc/rvmrc /etc/profile.d/rvm.sh /usr/local/rvm
+
+#relaod terminal
+killall tmux
+
+#update bash profile
+curl "https://gist.githubusercontent.com/flatironcloud9test/f4caa2abb515d3fdd4abf0c8c5fe51a5/raw/113c81c97eb665aa9ba2738a88052be62a276e2f/bash_profile" -o "$HOME/.bash_profile"
+#relaod terminal
+killall tmux
+#*** type "bp" to see if it worked**
+
+#reinstall rvm
+# get gpg key
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+#reinstall rvm
+curl -sSL https://get.rvm.io | bash -s -- --path ~/.rvm --auto-dotfiles
+unset GEM_HOME
+killall tmux
+
+#RVM is ready !!
