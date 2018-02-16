@@ -65,7 +65,9 @@ gem install rails —no-ri —no-rdocs
 # install postgresql
 yum install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-6-x86_64/pgdg-ami201503-96-9.6-2.noarch.rpm
 
-Sudo yum install postgresql96 postgresql96-server 
+Sudo yum install postgresql96 postgresql96-server postgresql96-devel
+
+gem install pg
 
 #initialise database
 sudo service Postgresql-9.6 initdb
