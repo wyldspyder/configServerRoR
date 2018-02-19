@@ -1,0 +1,5 @@
+# Pre-requis pour l'installation
+sudo yum install glibc-static
+
+#installation de cloud9 sur AMI de AWS
+curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash
